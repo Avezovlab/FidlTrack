@@ -11,7 +11,7 @@ either in freespace (no structural constraint on motion, e.g. plasma
 membrane), or in ER or mitochondria network geometries.
 
 The optimiser is provided as a Python notebook `notebooks/FidlTrack_predict.ipynb`, also accessible through Google Colab:
-https://colab.research.google.com/github/HenriquesLab/ZeroCostDL4Mic/blob/master/Tools/Quality_Control_ZeroCostDL4Mic.ipynb
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Avezovlab/FidlTrack/blob/main/notebooks/FidlTrack_predict.ipynb)
 
 
