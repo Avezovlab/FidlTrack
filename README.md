@@ -11,8 +11,8 @@ either in freespace (no structural constraint on motion, e.g. plasma
 membrane), or in ER or mitochondria network geometries.
 
 The optimiser is provided as a Python notebook `notebooks/FidlTrack_predict.ipynb`, also accessible through Google Colab:
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FidlTrack/notebooks/FidlTrack_predict.ipynb)
+https://colab.research.google.com/github/HenriquesLab/ZeroCostDL4Mic/blob/master/Tools/Quality_Control_ZeroCostDL4Mic.ipynb
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Avezovlab/FidlTrack/blob/main/notebooks/FidlTrack_predict.ipynb)
 
 
 ## Module 2: Structure-aware tracking
@@ -34,7 +34,7 @@ stack of mask.
 `colab_notebooks/FidlTrack_buildStructureGraph.ipynb`, also accessible
 through Google Colab:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FidlTrack/notebooks/FidlTrack_buildStructureGraph.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Avezovlab/FidlTrack/blob/main/notebooks/FidlTrack_buildStructureGraph.ipynb)
 
 This notebook transform the mask(s) into a pre-computed distance file
 along each of the provided structures.
@@ -97,7 +97,7 @@ conventional tracking).
 `notebooks/FidlTrack_ambiguity.ipynb`, to quantify and remove ambiguous
 displacements displacements, also accessible through Google Colab:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/FidlTrack/notebooks/FidlTrack_ambiguity.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Avezovlab/FidlTrack/blob/main/notebooks/FidlTrack_ambiguity.ipynb)
 
 This notebook is decomposed in three parts:
 
