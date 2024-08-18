@@ -70,7 +70,7 @@ tracking algorithm had to make a choice that we have no guarantee of
 being locally optimal. The Ambiguity Score is the percentage of
 ambiguous displacements found in all trajectories and is a good
 measure of the fidelity of a dataset, as according to our simulations
-> 50% of tracking errors happen at ambiguous displacements. Note
+more than 50% of tracking errors happen at ambiguous displacements. Note
 however that ambiguity is a conservative measure and not all ambiguous
 displacements are necessarily erroneous.
 
