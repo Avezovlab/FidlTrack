@@ -123,5 +123,7 @@ mitochondria), ambiguity is best coupled with structure-aware tracking
 as the graph distance strongly decreases the amount of ambiguous
 displacements.
 
+## Example data
 
+Example data and configuration files are available [here](https://www.dropbox.com/scl/fi/ujv06ac201vrfp9fjlodn/FidlTrack_example_data.7z?rlkey=ssqccu594sg8s1nwln0dydzxe&st=n6e2bt2m&dl=0).
 
