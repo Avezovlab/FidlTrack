@@ -1,5 +1,6 @@
 from fiji.plugin.trackmate import TrackMate, Settings, Model, Logger, Spot
 from fiji.plugin.trackmate.detection import LogDetectorFactory
+from fiji.plugin.trackmate.features.spot import SpotIntensityMultiCAnalyzerFactory
 
 from ij import IJ, WindowManager
 import fiji.plugin.trackmate.features.FeatureFilter as FeatureFilter
@@ -11,9 +12,59 @@ import sys
 from os import path
 from math import sqrt
 
-sys.path.append(" path to folder containing a config_tracking.py file")
+#sys.path.append(" path to folder containing a config_tracking.py file")
 #eg.
 #sys.path.append("../FidlTrack_example_data/240130_cos418+716_3.5ul_6ms")
+
+#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-681_2colorSPT")
+#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-681_1reglocPA")
+#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-600_2colorSPT")
+#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-600_1reglocPA")
+
+#sys.path.append("/mnt/data4/gdrive_SPT/190223_Pierre_U2OSPerk_fixed/")
+
+#sys.path.append("/mnt/data3/droso/data/271023_droso/from_241023/SPT")
+#sys.path.append("/mnt/data3/droso/data/140224_PierreMaysoon_drosoMutant_d+2/good")
+#sys.path.append("/mnt/data3/droso/data/310124_PierreMaysoon_mutant/good")
+#sys.path.append("/mnt/data3/droso/data/010324_droso_3xmutant/good")
+#sys.path.append("/mnt/data3/droso/data/201023_droso_cool/DT0.012")
+#sys.path.append("/mnt/data3/droso/data/201023_droso_cool/DT0.0135")
+#sys.path.append("/mnt/data3/droso/data/pierre_maysoon_280624_droso/wt_3/SPT")
+#sys.path.append("/mnt/data3/droso/data/pierre_maysoon_droso_WT_030724/wt1/SPT")
+
+#sys.path.append("/mnt/data3/perk_ire1/raw_data/DRI/010523_U2OS25")
+#sys.path.append("/mnt/data3/perk_ire1/raw_data/DRI/040423_H3")
+#sys.path.append("/mnt/data3/perk_ire1/raw_data/DRI/090423_H3603")
+
+
+#sys.path.append("/mnt/data4/yutong/2cols/240823_cos123-663-681_2colorSPT/6ms")
+#sys.path.append("/mnt/data4/yutong/2cols/240823_cos123-663-600_2colorSPT/60ms")
+
+#sys.path.append("/mnt/data4/SPT_ineurons/data/230717_Yutong_neuron10_SPT")
+#sys.path.append("/mnt/data4/SPT_ineurons/data/230714_Yutong_neuron7_SPT")
+#sys.path.append("/mnt/data4/SPT_ineurons/data/230808_Yutong_neuron13_SPT_6ms")
+#sys.path.append("/mnt/data4/SPT_ineurons/data/230818_Yutong_neuron_SPT_multiregion")
+
+#sys.path.append("/home/pierre/yutong/bip")
+#sys.path.append("/home/pierre/yutong/bip/191124_BiP_2colorSPT")
+
+#sys.path.append("/mnt/data2/SPT_method/roger/u2os_HaloKDEL")
+#sys.path.append("/mnt/data2/SPT_method/roger/u2os_HaloKDEL_250123")
+
+#sys.path.append("/mnt/data2/SPT_method/roger/Hela_250206")
+#sys.path.append("//mnt/data2/SPT_method/roger/Hela_250220")
+#sys.path.append("/mnt/data4/SPT_method_moved_for_space/roger/Hela_250226")
+
+#sys.path.append("/mnt/data2/SPT_method/nanobody/869_717/250116")
+#sys.path.append("/mnt/data2/SPT_method/nanobody/869_717/250120")
+
+
+#sys.path.append("/mnt/data2/SPT_method/nanobody/APP")
+#sys.path.append("/mnt/data2/SPT_method/nanobody/nb")
+#sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
+
+
+sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
 
 from config_tracking import *
 
@@ -28,7 +79,9 @@ for cpt, fname in enumerate(filenames):
 	exp_path = "/".join(fname.split("/")[:-1])
 	exp_fname = fname.split("/")[-1]
 
+	out_path = exp_path[len(base_dir):]
 	base_fname = exp_fname[len(base_start):-len(base_ext)]
+
 
 	if mask:
 		mask_f = "/".join([exp_path, mask_fname.format(fname=base_fname)])
@@ -37,7 +90,7 @@ for cpt, fname in enumerate(filenames):
 			print(" [ERROR] Mask file not found")
 			continue
 
-	outPath = "/".join([out_dir, base_fname])
+	outPath = "/".join([out_dir, out_path, base_start + base_fname])
 
 	if not path.isdir(outPath):
 		os.makedirs(outPath)
@@ -81,9 +134,17 @@ for cpt, fname in enumerate(filenames):
 		cur_title = imp.getTitle()
 		imp = WindowManager.getImage(cur_title)
 
-		for spot_th in ths:
+		if type(ths) == dict:
+			cur_ths = ths[exp_fname[:2]]
+		else:
+			cur_ths = ths
+
+		for spot_th in cur_ths:
+			print(mask)
 			out_fname = "/".join([outPath, spot_fname.format(mask=mask, spot_rad=p_DIAMETER, spot_th=spot_th)])
+			
 			if not force and path.isfile(out_fname):
+				print(out_fname)
 				print("  Skipped")
 				continue
 			print("  {}".format(out_fname))
@@ -111,8 +172,10 @@ for cpt, fname in enumerate(filenames):
 			settings.addSpotFilter(FeatureFilter('POSITION_Y', p_DIAMETER / 2, True))
 			settings.addSpotFilter(FeatureFilter('POSITION_Y', dims[1] *  calib.pixelWidth - p_DIAMETER / 2, False))
 
+			settings.addSpotAnalyzerFactory(SpotIntensityMultiCAnalyzerFactory())
+
 			trackmate = TrackMate(model, settings)
-			trackmate.setNumThreads(4)
+			trackmate.setNumThreads(12)
 
 			ok = trackmate.execDetection()
 			if not ok:
@@ -127,10 +190,14 @@ for cpt, fname in enumerate(filenames):
 				print(str(trackmate.getErrorMessage()))
 				continue
 
-			if "reg" in locals() and reg:
-				print(" REGISTERING SPOTS: {},{}".format(reg[0], reg[1]))
 
-			if mask_imp:
+			if ("reg" in locals() and reg) or ("regs" in locals() and regs):
+				print(" REGISTERING SPOTS")
+				if regs:
+					reg = regs[reg_key(exp_fname)]
+					print(exp_fname, reg_key(exp_fname), reg)
+
+			if mask_imp:	
 				n = 0
 				spots_to_rm = []
 				for s in model.getSpots().iterator(True):
@@ -153,7 +220,7 @@ for cpt, fname in enumerate(filenames):
 				print(" REMOVING {}/{} spots not in structure".format(len(spots_to_rm), n))
 				for s in spots_to_rm:
 					model.removeSpot(s)
-			
+
 			###REMOVE DUPLICATED SPOTS (WHY IS THIS EVEN A THING???)
 			spts = list(model.getSpots().iterator(True))
 			spts_fr = {}
@@ -181,7 +248,7 @@ for cpt, fname in enumerate(filenames):
 			for s in to_rm:
 				model.removeSpot(s)
 
-			towrite = ["POSITION_T", "POSITION_X", "POSITION_Y", "FRAME", "RADIUS", "QUALITY"]
+			towrite = ["POSITION_T", "POSITION_X", "POSITION_Y", "FRAME", "QUALITY", "MEAN_INTENSITY_CH1", "TOTAL_INTENSITY_CH1"]
 			with open(out_fname, 'w') as f:
 				f.write(",".join(towrite) + "\n")
 				for spot in model.getSpots().iterator(True):
