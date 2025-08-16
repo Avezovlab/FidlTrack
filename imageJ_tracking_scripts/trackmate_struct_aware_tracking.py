@@ -20,7 +20,11 @@ from math import sqrt
 #sys.path.append("/mnt/data2/SPT_method/roger/Hela_250220")
 #sys.path.append("/mnt/data4/SPT_method_moved_for_space/roger/Hela_250226")
 
-sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
+#sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
+
+#sys.path.append("/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1")
+sys.path.append("/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/C1-cell5_2_10ms")
+
 
 from config_tracking import *
 

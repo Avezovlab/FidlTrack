@@ -238,17 +238,27 @@ def save_bin_comps3D(w_dur, w_ovlp, nframes, all_dists, cache_r, dists, rev_map_
 # fname = "cell6_MMStack_Pos0_c.ome.tif_avg51_FRAME2252_usharp2px_0.8_blur0.5px_Simple_Segmentation_bin_erodecric1px_adj_poly.poly_dil.tif_stabN=1.tif_comps_wDur=60001_wOvlp=0.tif"
 # pxsize = 0.0645
 
-basedir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1"
-fname = "C1-cell1_MMStack_Pos0_c.ome.tif_avg51_Simple_Segmentation_binary_cleaned2_closed_eroded_circ1px_inv_stabN=3_comps_wDur=201_wOvlp=0.0001.tif"
-pxsize = 0.0645
+#basedir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1"
+#fname = "C1-cell1_MMStack_Pos0_c.ome.tif_avg51_Simple_Segmentation_binary_cleaned2_closed_eroded_circ1px_inv_stabN=3_comps_wDur=201_wOvlp=0.0001.tif"
+
+#basedir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/C1-cell5_2_10ms"
+#fname = "C1-cell5_2_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_eroded_circ1px.tif_stabN=3.tif_comps_wDur=201_wOvlp=0.0001.tif"
+
+#basedir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell10_nobace1_10ms"
+#fname = "C1-cell10_nobace1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_close_erode_circ1px_cleaned.tif_stabN=3.tif_comps_wDur=101_wOvlp=0.0001.tif"
+#pxsize = 0.0645
+
+basedir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell11_nobace1_1_10ms"
+fname = "C1-cell11_nobace1_1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_circ1px_stabN=3_comps_wDur=101_wOvlp=0.0001.tif"
+pxsize = 0.065
 
 max_dist = 2.1
 stab_Nframes = 3
-w_dur = 201
+w_dur = 101
 w_ovlp = 0.0001
 #w_dur = 21
 #w_ovlp = 0.0005
-rm_comps_ltpxs = 100
+rm_comps_ltpxs = 200
 force_recompute = False
 
 
@@ -339,6 +349,7 @@ else: #stack of masks
       comps_px1D[k] = sorted(comps_px1D[k])
 
     for comp,pxs in comps_px1D.items():
+      print(" ", len(pxs))
       comp = int(comp)
       if comp not in dists:
         dists[comp] = {}

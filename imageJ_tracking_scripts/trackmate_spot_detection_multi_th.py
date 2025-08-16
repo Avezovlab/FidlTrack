@@ -63,8 +63,10 @@ from math import sqrt
 #sys.path.append("/mnt/data2/SPT_method/nanobody/nb")
 #sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
 
+#sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
 
-sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
+sys.path.append("/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1")
+
 
 from config_tracking import *
 

@@ -50,16 +50,26 @@ from matplotlib import pyplot as plt
 #img_name = "C1-cell6_MMStack_Pos0_c.ome.tif_avg51_FRAME2252_usharp2px_0.8_blur0.5px_Simple_Segmentation_bin_erodecric1px_adj_dil.tif"
 #pxsize = 0.0645
 
-img_dir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1"
-img_name = "C1-cell1_MMStack_Pos0_c.ome.tif_avg51_Simple_Segmentation_binary_cleaned2_closed_eroded_circ1px_inv.tif"
-pxsize = 0.0645
+#img_dir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1"
+#img_name = "C1-cell1_MMStack_Pos0_c.ome.tif_avg51_Simple_Segmentation_binary_cleaned2_closed_eroded_circ1px_inv.tif"
+
+#img_dir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/C1-cell5_2_10ms"
+#img_name = "C1-cell5_2_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_eroded_circ1px.tif"
+
+#img_dir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell10_nobace1_10ms"
+#img_name = "C1-cell10_nobace1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_close_erode_circ1px_cleaned.tif"
+#pxsize = 0.0645
+
+img_dir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell11_nobace1_1_10ms"
+img_name = "C1-cell11_nobace1_1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_circ1px.tif" #rm_comps_ltpxs = 200
+pxsize = 0.065
 
 stab_Nframes = 3
-w_dur = 201
+w_dur = 101
 w_ovlp = 0.0001
 #w_dur = 21
 #w_ovlp = 0.0005
-rm_comps_ltpxs = 100
+rm_comps_ltpxs = 200
 force_recompute = False
 
 
@@ -138,9 +148,15 @@ else:
       labs[k] = np.maximum(labs[k], img[i] > 0)
 
     labs[k] = label(labs[k] > 0)
+    idxs = np.array(sorted(set(labs[k].flatten()), key=lambda x: sum(labs[k].flatten() == x),
+                  reverse=True))
+
     for p in regionprops(labs[k]):
       if p.coords.shape[0] < rm_comps_ltpxs:
         labs[k, p.coords[:,0], p.coords[:,1]] = 0
+      else:
+        print(p.label, np.where(idxs == p.label)[0][0])
+        labs[k, p.coords[:,0], p.coords[:,1]] = np.where(idxs == p.label)[0][0] + 1
 
   sk.io.imsave(win_fname + ".tif", labs, check_contrast=False)
   print("Saved: {}".format(win_fname + ".tif"))
