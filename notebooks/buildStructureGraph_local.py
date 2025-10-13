@@ -5,7 +5,6 @@ Created on Thu Apr  3 14:17:32 2025
 
 @author: pierre
 """
-from os import path
 import numpy as np
 import struct
 import progressbar
@@ -205,92 +204,30 @@ def save_bin_comps3D(w_dur, w_ovlp, nframes, all_dists, cache_r, dists, rev_map_
 
 ####STARTS HERE
 
-#basedir = "/mnt/data2/SPT_method/roger/Hela_250220/CTL"
-#fname = "C2-250220_HeLa_Sec13_SNAP_GFP_Sec61_Halo_KDEL_250nM_PAJF646_c16.nd2_preview_Simple_Segmentation_bin_stabN=1_comps_wDur=51_wOvlp=0.015.tif"
 
-#basedir = "/mnt/data4/SPT_method_moved_for_space/roger/Hela_250226/CTL"
-#fname = "C2-250226_HeLa_Sec13_SNAP_GFP_Sec61_Halo_KDEL_50nM_PAJF646_c3.nd2_preview_Simple_Segmentation_bin_stabN=1_comps_wDur=21_wOvlp=0.04.tif"
-#fname = "C2-250226_HeLa_Sec13_SNAP_GFP_Sec61_Halo_KDEL_250nM_PAJF646_c9.nd2_preview_Simple Segmentation_bin_open1pxcirc_stabN=1_comps_wDur=21_wOvlp=0.04.tif"
-
-# pxsize = 0.159
-# max_dist = 1.3
-# w_dur = 51#@param {type:"number"}
-# w_ovlp = 0.015#@param {type:"number"}
-# stab_Nframes = 1#@param {type:"number"}
-# rm_comps_ltpxs = 50#@param {type:"number"}"
+basedir = "XX" #path to directory containing the data
+fname = "XX" #name of the component stack file
 
 
-#basedir = "/mnt/data2/SPT_method/simu/hex/sim"
-#fname = "hexnet_25_100_poly.poly_fov_dil_stabN=1_comps_wDur=60001_wOvlp=0.tif"
-#fname = "hexnet_38_100_poly.poly_fov_dil_stabN=1_comps_wDur=60001_wOvlp=0.tif"
-#fname = "hexnet_75_100_poly.poly_fov_dil_stabN=1_comps_wDur=60001_wOvlp=0.tif"
-
-
-#basedir = "/mnt/data2/SPT_method/simu/hex_deci/"
-#fname = "hexnet_deci_25_100_0.025_0.15_bin_fov_dil_stabN=1_comps_wDur=60001_wOvlp=0.tif"
-
-# basedir = "/mnt/data2/SPT_method/simu/hex_deci/a"
-# fname = "hexnet_deci_100_100_0.025_0.15_bin_fov_dil.tif"
-# pxsize = 0.006048881
-
-
-# basedir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240123_Yutong_dATL_20ms/cell6/sim"
-# fname = "cell6_MMStack_Pos0_c.ome.tif_avg51_FRAME2252_usharp2px_0.8_blur0.5px_Simple_Segmentation_bin_erodecric1px_adj_poly.poly_dil.tif_stabN=1.tif_comps_wDur=60001_wOvlp=0.tif"
-# pxsize = 0.0645
-
-#basedir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1"
-#fname = "C1-cell1_MMStack_Pos0_c.ome.tif_avg51_Simple_Segmentation_binary_cleaned2_closed_eroded_circ1px_inv_stabN=3_comps_wDur=201_wOvlp=0.0001.tif"
-
-#basedir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/C1-cell5_2_10ms"
-#fname = "C1-cell5_2_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_eroded_circ1px.tif_stabN=3.tif_comps_wDur=201_wOvlp=0.0001.tif"
-
-#basedir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell10_nobace1_10ms"
-#fname = "C1-cell10_nobace1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_close_erode_circ1px_cleaned.tif_stabN=3.tif_comps_wDur=101_wOvlp=0.0001.tif"
-#pxsize = 0.0645
-
-basedir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell11_nobace1_1_10ms"
-fname = "C1-cell11_nobace1_1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_circ1px_stabN=3_comps_wDur=101_wOvlp=0.0001.tif"
-pxsize = 0.065
-
-max_dist = 2.1
-stab_Nframes = 3
-w_dur = 101
-w_ovlp = 0.0001
-#w_dur = 21
-#w_ovlp = 0.0005
-rm_comps_ltpxs = 200
+pxsize = XX #in micron
+max_dist = XX #in micron
+stab_Nframes = XX
+w_dur = XX #in frames
+w_ovlp = XX
+rm_comps_ltpxs = XX #in pixels
 force_recompute = False
 
-
-#basedir = "/mnt/data2/SPT_method/simu/lines/"
-#fname = "struct_line_dist=31_pxsize=0.024195525_poly_fov_stabN=1_comps_wDur=60001_wOvlp=0.tif" 
-#fname = "struct_line_dist=42_pxsize=0.024195525_poly_fov_stabN=1_comps_wDur=60001_wOvlp=0.tif" 
-#fname = "struct_line_dist=52_pxsize=0.024195525_poly_fov_stabN=1_comps_wDur=60001_wOvlp=0.tif"
-
-# max_dist = 6.1
-# w_dur = 60001
-# w_ovlp = 0
-# stab_Nframes = 1
-# rm_comps_ltpxs = 0
-#pxsize = 0.024195525
+dist_fname = "{}_dist={}".format(fname, max_dist)
+SQRT2_PXSIZE = np.sqrt(2) * pxsize
 
 
 labs = imread("{}/{}".format(basedir, fname))
-stab_fname = "{}/{}".format(basedir, "{}_stabN={}".format(path.splitext(fname)[0], stab_Nframes))
-comps_fname = "{}_comps".format(stab_fname)
-win_fname = "{}_wDur={}_wOvlp={}".format(comps_fname, w_dur, w_ovlp)
-dist_fname = "{}_dist={}".format(win_fname, max_dist)
-
-
-
-SQRT2_PXSIZE = np.sqrt(2) * pxsize
-
 if len(labs.shape) == 2:
     labs = labs.reshape((1, labs.shape[0], labs.shape[1]))
 
 IMSIZE = labs.shape[2]
 
-print(win_fname)
+print(fname)
 
 elts_f = {}
 elts_r = {}

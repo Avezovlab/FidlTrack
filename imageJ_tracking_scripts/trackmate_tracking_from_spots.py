@@ -9,51 +9,9 @@ import os
 import sys
 from os import path
 
-#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-681_2colorSPT")
-#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-681_1reglocPA")
-#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-600_2colorSPT")
-#sys.path.append("/mnt/data4/yutong/2cols/240816_cos123-663-600_1reglocPA")
-#sys.path.append("/mnt/data3/droso/data/271023_droso/from_241023/SPT")
-
-#sys.path.append("/mnt/data3/droso/data/271023_droso/from_241023/SPT")
-#sys.path.append("/mnt/data3/droso/data/140224_PierreMaysoon_drosoMutant_d+2/good")
-#sys.path.append("/mnt/data3/droso/data/310124_PierreMaysoon_mutant/good")
-#sys.path.append("/mnt/data3/droso/data/010324_droso_3xmutant/good")
-#sys.path.append("/mnt/data3/droso/data/201023_droso_cool/DT0.012")
-#sys.path.append("/mnt/data3/droso/data/201023_droso_cool/DT0.0135")
-#sys.path.append("/mnt/data3/droso/data/pierre_maysoon_280624_droso/wt_3/SPT")
-#sys.path.append("/mnt/data3/droso/data/pierre_maysoon_droso_WT_030724/wt1/SPT")
-
-#sys.path.append("/mnt/data3/perk_ire1/raw_data/DRI/010523_U2OS25")
-#sys.path.append("/mnt/data3/perk_ire1/raw_data/DRI/040423_H3")
-
-#sys.path.append("/mnt/data4/yutong/2cols/240823_cos123-663-681_2colorSPT/6ms")
-#sys.path.append("/mnt/data4/yutong/2cols/240823_cos123-663-681_2colorSPT/12ms")
-#sys.path.append("/mnt/data4/yutong/2cols/240823_cos123-663-600_2colorSPT/6ms")
-
-
-#sys.path.append("/mnt/data4/SPT_ineurons/data/230717_Yutong_neuron10_SPT")
-#sys.path.append("/mnt/data4/SPT_ineurons/data/230714_Yutong_neuron7_SPT")
-#sys.path.append("/mnt/data4/SPT_ineurons/data/230808_Yutong_neuron13_SPT_6ms")
-#sys.path.append("/mnt/data4/SPT_ineurons/data/230818_Yutong_neuron_SPT_multiregion")
-
-#sys.path.append("/home/pierre/yutong/bip/051124")
-#sys.path.append("/home/pierre/yutong/bip/191124_BiP_2colorSPT")
-
-#sys.path.append("/mnt/data2/SPT_method/nanobody/869_717/250116")
-#sys.path.append("/mnt/data2/SPT_method/roger/u2os_HaloKDEL_250123")
-#sys.path.append("/mnt/data2/SPT_method/nanobody/869_717/250120")
-
-
-#sys.path.append("/mnt/data2/SPT_method/roger/Hela_250206")
-#sys.path.append("/mnt/data4/SPT_method_moved_for_space/roger/Hela_250226")
-#sys.path.append("//mnt/data2/SPT_method/roger/Hela_250220")
-
-#sys.path.append("/mnt/data2/SPT_method/roger/u2os_HaloKDEL")
-
-#sys.path.append("/mnt/data2/SPT_method/nanobody/APP")
-#sys.path.append("/mnt/data2/SPT_method/nanobody/nb")
-sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
+#sys.path.append(" path to folder containing a config_tracking.py file")
+#eg.
+sys.path.append("../FidlTrack_example_data/240130_cos418+716_3.5ul_6ms")
 
 from config_tracking import *
 

@@ -14,33 +14,11 @@ from math import sqrt
 
 #sys.path.append(" path to folder containing a config_tracking.py file")
 #eg.
-#sys.path.append("../FidlTrack_example_data/240130_cos418+716_3.5ul_6ms")
+sys.path.append("../FidlTrack_example_data/240130_cos418+716_3.5ul_6ms")
 
-#sys.path.append("/mnt/data2/SPT_method/roger/Hela_250206")
-#sys.path.append("/mnt/data2/SPT_method/roger/Hela_250220")
-#sys.path.append("/mnt/data4/SPT_method_moved_for_space/roger/Hela_250226")
-
-#sys.path.append("/mnt/data2/SPT_method/nanobody/nb+APP")
-
-#sys.path.append("/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1")
-sys.path.append("/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/C1-cell5_2_10ms")
 
 
 from config_tracking import *
-
-#def load_spots_trackmate(f, model):
-#	head = f.readline().rstrip("\n").split(",")
-#	frame_idx = head.index("FRAME")
-#	x_idx = head.index("POSITION_X")                                 
-#	y_idx = head.index("POSITION_Y")
-#	r_idx = head.index("RADIUS")
-#	q_idx = head.index("QUALITY")
-#	for i, ln in enumerate(f.readlines()):
-#		ln = ln.rstrip("\n").split(",")
-#		frame = int(float(ln[frame_idx]))
-#		spt = Spot(float(ln[x_idx]), float(ln[y_idx]), 0.0, float(ln[r_idx]), float(ln[q_idx]), "ID{}".format(i))
-#		spt.putFeature("POSITION_T", float(ln[0]))
-#		model.addSpotTo(spt, frame)
 
 def load_spots_trackmate(f, model):
 	for i, ln in enumerate(f.readlines()):
@@ -78,7 +56,7 @@ for cpt, exp_path in enumerate(todo_dirs):
 	dims = imp.getDimensions()
 	is_single_frame = all([e == 1 for e in dims[2:]])
 
-	#sub_path.split("/")[1]
+
 	cur_dist_fname = path.join(base_dir, "", dist_fname.format(fname=base_fname[len("C1-"):], max_dist=struct_max_dist))
 	print(cur_dist_fname)
 	if not path.isfile(cur_dist_fname):

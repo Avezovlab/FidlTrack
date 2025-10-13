@@ -8,81 +8,21 @@ Created on Mon Apr  7 12:45:05 2025
 from os import path
 import numpy as np
 import skimage as sk
-import struct
 from math import floor
-import progressbar
 from skimage.measure import label, regionprops
 
-import queue
-from dataclasses import dataclass, field
-from typing import Any
-
-from matplotlib import pyplot as plt
-
-#img_dir = "/mnt/data4/SPT_method_moved_for_space/roger/Hela_250226/CTL"
-#img_name = "C2-250226_HeLa_Sec13_SNAP_GFP_Sec61_Halo_KDEL_50nM_PAJF646_c3.nd2_preview_Simple_Segmentation_bin.tif"
-
-#img_dir = "/mnt/data4/SPT_method_moved_for_space/roger/Hela_250226/CTL"
-#img_name = "C2-250226_HeLa_Sec13_SNAP_GFP_Sec61_Halo_KDEL_250nM_PAJF646_c9.nd2_preview_Simple Segmentation_bin_open1pxcirc.tif"
-
-# max_dist = 1.3
-# w_dur = 21
-# w_ovlp = 0.04
-# stab_Nframes = 1
-# rm_comps_ltpxs = 50
-# pxsize = 0.0967821
-# force_recompute = False
+img_dir = "XX" #path to the directory containing the data
+img_name = "XX" #name of the segmented image
 
 
-#img_dir = "/mnt/data2/SPT_method/simu/hex/sim"
-#img_name = "hexnet_25_100_poly.poly_fov_dil.tif" #"hexnet_75_100_poly.poly_fov_dil.tif" #"hexnet_38_100_poly.poly_fov_dil.tif"
-
-#img_dir = "/mnt/data2/SPT_method/simu/hex_deci/"
-#img_name = "hexnet_deci_25_100_0.025_0.15_bin_fov_dil.tif" #"hexnet_75_100_poly.poly_fov_dil.tif" #"hexnet_38_100_poly.poly_fov_dil.tif"
-
-
-# img_dir = "/mnt/data2/SPT_method/simu/hex_deci/a"
-# img_name = "hexnet_deci_100_100_0.025_0.15_bin_fov_dil.tif"
-# pxsize = 0.006048881
+pxsize = XX #in micron
+stab_Nframes = XX #in frames
+w_dur = XX #in frames
+w_ovlp = XX #in frames
+rm_comps_ltpxs = XX #in pixels
 
 
-#img_dir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240123_Yutong_dATL_20ms/cell6/sim"
-#img_name = "C1-cell6_MMStack_Pos0_c.ome.tif_avg51_FRAME2252_usharp2px_0.8_blur0.5px_Simple_Segmentation_bin_erodecric1px_adj_dil.tif"
-#pxsize = 0.0645
-
-#img_dir = "/mnt/data4/SPT_method_moved_for_space/yutong_240123/240122_Yutong_cos123-716-717-418_HPA646-3ul_6ms/cell1"
-#img_name = "C1-cell1_MMStack_Pos0_c.ome.tif_avg51_Simple_Segmentation_binary_cleaned2_closed_eroded_circ1px_inv.tif"
-
-#img_dir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/C1-cell5_2_10ms"
-#img_name = "C1-cell5_2_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_eroded_circ1px.tif"
-
-#img_dir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell10_nobace1_10ms"
-#img_name = "C1-cell10_nobace1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_close_erode_circ1px_cleaned.tif"
-#pxsize = 0.0645
-
-img_dir = "/mnt/data4/SPT_method_moved_for_space/APP/290725_PP_YY_cos123-931/cell11_nobace1_1_10ms"
-img_name = "C1-cell11_nobace1_1_10ms_MMStack_Pos0.ome.tif_avg51_Simple_Segmentation_bin_closed_circ1px.tif" #rm_comps_ltpxs = 200
-pxsize = 0.065
-
-stab_Nframes = 3
-w_dur = 101
-w_ovlp = 0.0001
-#w_dur = 21
-#w_ovlp = 0.0005
-rm_comps_ltpxs = 200
 force_recompute = False
-
-
-#img_dir = "/mnt/data2/SPT_method/simu/lines/"
-#img_name = "struct_line_dist=52_pxsize=0.024195525_poly_fov.tif" #"struct_line_dist=42_pxsize=0.024195525_poly_fov.tif" #"struct_line_dist=31_pxsize=0.024195525_poly_fov.tif"
-
-
-# w_dur = 60001
-# w_ovlp = 0
-# stab_Nframes = 1
-# rm_comps_ltpxs = 0
-# #pxsize = 0.024195525
-# force_recompute = False
 
 
 mask_img = "/".join([img_dir, img_name])
